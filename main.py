@@ -23,7 +23,7 @@ def appendToResults(results, response):
             ))
 
 ## write results and latest skip so next iteration can be accumulative and not from scratch
-def writeToDB(results, skip):
+def writeToDB(results, total):
     print('do nothing for now')
 
 def main():
@@ -42,7 +42,7 @@ def main():
         api_url = "https://api.fda.gov/food/enforcement.json?limit={limit}&skip={skip}".format(limit=limit, skip=skip)
         appendToResults(results, requests.get(api_url).json())
         skip += limit
-    writeToDB(results)
+    writeToDB(results, total)
 
 
 
